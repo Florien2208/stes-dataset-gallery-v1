@@ -1,3 +1,9 @@
-export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!  gallery</h1>;
-}
+import React from "react";
+import Dashboard from "./components/Dashboard";
+
+
+const App: React.FC = () => {
+  return <Dashboard />;
+};
+
+export default App;
