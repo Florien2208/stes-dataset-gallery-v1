@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CollectionUpload: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -17,20 +19,26 @@ const CollectionUpload: React.FC = () => {
         await axios.post("http://localhost:8000/api/gallery/collection", {
           title,
         });
-        navigate("/"); // Navigate back to the home page after successful creation
+        toast.success("Collection created successfully!");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000); // Navigate after 2 seconds to allow the user to see the notification
       } catch (err) {
         console.error("Error creating collection", err);
         setError("Failed to create collection. Please try again.");
+        toast.error("Failed to create collection. Please try again.");
       } finally {
         setIsLoading(false);
       }
     } else {
       setError("Please fill in the title field.");
+      toast.error("Please fill in the title field.");
     }
   };
 
   return (
     <div className="max-w-md mx-auto mt-10">
+      <ToastContainer />
       <h2 className="text-2xl font-bold mb-4">Create New Collection</h2>
       {error && (
         <div
