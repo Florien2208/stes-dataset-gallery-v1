@@ -9,7 +9,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <aside className="w-64 bg-gray-800 text-white p-6">
       <ul>
-        <Link to="gallery">
+        <Link to="">
           <li className="mb-4">Manage Gallery</li>
         </Link>
         {/* <Link
